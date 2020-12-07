@@ -1,0 +1,32 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: 数字图像处理 - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x804 /fo"Debug/数字图像处理.res" /d "_DEBUG" "E:\Code\数字图像处理\数字图像处理.rc"" 
+Creating temporary file "C:\Users\1\AppData\Local\Temp\RSP39C9.tmp" with contents
+[
+/nologo /subsystem:windows /incremental:yes /pdb:"Debug/数字图像处理.pdb" /debug /machine:I386 /out:"Debug/数字图像处理.exe" /pdbtype:sept 
+".\Debug\数字图像处理.obj"
+".\Debug\StdAfx.obj"
+".\Debug\MainFrm.obj"
+".\Debug\数字图像处理Doc.obj"
+".\Debug\数字图像处理View.obj"
+".\Debug\数字图像处理.res"
+".\Debug\bmp.obj"
+]
+Creating command line "link.exe @C:\Users\1\AppData\Local\Temp\RSP39C9.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Linking...
+
+
+
+<h3>Results</h3>
+数字图像处理.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>
