@@ -61,3 +61,67 @@ BOOL LoadBmpFile(char* BmpFileName)
 	
 	return TRUE;
 }
+
+void gray()
+{
+	if(NULL == lpBitsInfo)
+		return;
+	int w = lpBitsInfo->bmiHeader.biWidth;
+	int h = lpBitsInfo->bmiHeader.biHeight;
+	int LineBytes = (w * lpBitsInfo->bmiHeader.biBitCount + 31)/32 * 4;
+	BYTE* lpBits = 
+	(BYTE*)&lpBitsInfo->bmiColors[lpBitsInfo->bmiHeader.biClrUsed];
+
+	int i, j;
+	BYTE *R,*G,*B,avg;
+	for (i = 0; i < h; i ++)
+	{
+		for (j = 0; j < w; j ++)
+		{
+			B = lpBits + LineBytes * i + j * 3;
+			G = B + 1;
+			R = G + 1;
+			avg = (*R + *G + *B)/3;
+			*R = *G = *B = avg;
+
+		}
+	}
+
+}
+
+DWORD H[256];
+void Histogram()
+{
+	int w= lpBitsInfo->bmiHeader. biWidth;
+	int h = lpBitsInfo->bmiHeader.biHeight;
+	int LineBytes = (w * lpBitsInfo->bmiHeader. biBitCount + 31)/32* 4;
+	BYTE* lpBits = (BYTE*)&lpBitsInfo->bmiColors[lpBitsInfo->bmiHeader.biClrUsed];
+	
+	int i ,j;
+	BYTE* pixel;
+	
+	for(i = 0; i < 256; i ++)
+		H[i] =0;
+	for(i = 0; i < h; i ++)
+	{
+		for (j = 0; j < w; j ++)
+		{
+			pixel =lpBits + LineBytes * (h - 1 - i) + j ;
+			H[*pixel] ++;
+		}
+	}
+}
+
+BOOL IsGray()
+{
+	int r,g,b;
+	if (lpBitsInfo->bmiHeader. biBitCount == 8)
+	{
+		r = lpBitsInfo->bmiColors[128].rgbRed;
+		g = lpBitsInfo->bmiColors[128].rgbGreen;
+		b = lpBitsInfo->bmiColors[128].rgbBlue;
+		if (r == b && r == g)
+			return TRUE;
+	}
+	return FALSE;
+}
