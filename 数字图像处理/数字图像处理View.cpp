@@ -3,7 +3,7 @@
 
 #include "stdafx.h"
 #include "数字图像处理.h"
-
+#include "HistogramDlg.h"
 #include "数字图像处理Doc.h"
 #include "数字图像处理View.h"
 
@@ -20,8 +20,10 @@ IMPLEMENT_DYNCREATE(CMyView, CScrollView)
 
 BEGIN_MESSAGE_MAP(CMyView, CScrollView)
 	//{{AFX_MSG_MAP(CMyView)
-		// NOTE - the ClassWizard will add and remove mapping macros here.
-		//    DO NOT EDIT what you see in these blocks of generated code!
+	ON_COMMAND(ID_GRAY, OnGray)
+	ON_UPDATE_COMMAND_UI(ID_GRAY, OnUpdateGray)
+	ON_COMMAND(ID_HISTOGRAM, OnHistogram)
+	ON_UPDATE_COMMAND_UI(ID_HISTOGRAM, OnUpdateHistogram)
 	//}}AFX_MSG_MAP
 END_MESSAGE_MAP()
 
@@ -106,3 +108,29 @@ CMyDoc* CMyView::GetDocument() // non-debug version is inline
 
 /////////////////////////////////////////////////////////////////////////////
 // CMyView message handlers
+void gray();
+void CMyView::OnGray() 
+{
+	// TODO: Add your command handler code here
+	gray();
+	Invalidate();
+}
+
+void CMyView::OnUpdateGray(CCmdUI* pCmdUI) 
+{
+	// TODO: Add your command update UI handler code here
+	pCmdUI->Enable(lpBitsInfo != NULL && lpBitsInfo->bmiHeader.biBitCount == 24);
+}
+
+void CMyView::OnHistogram() 
+{
+	// TODO: Add your command handler code here
+	HistogramDlg dlg;
+	dlg.DoModal();
+}
+BOOL IsGray();
+void CMyView::OnUpdateHistogram(CCmdUI* pCmdUI) 
+{
+	// TODO: Add your command update UI handler code here
+	pCmdUI->Enable(lpBitsInfo != NULL && IsGray());
+}
