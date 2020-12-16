@@ -2,7 +2,7 @@
 
 [General Info]
 Version=1
-LastClass=CAboutDlg
+LastClass=CMyView
 LastTemplate=CDialog
 NewFileInclude1=#include "stdafx.h"
 NewFileInclude2=#include "数字图像处理.h"
@@ -15,9 +15,9 @@ Class3=CMyView
 Class4=CMainFrame
 
 ResourceCount=3
-Resource1=IDR_MAINFRAME
+Resource1=IDD_ABOUTBOX
 Class5=CAboutDlg
-Resource2=IDD_ABOUTBOX
+Resource2=IDR_MAINFRAME
 Class6=HistogramDlg
 Resource3=IDD_DIALOG1
 
@@ -43,7 +43,7 @@ ImplementationFile=数字图像处理View.cpp
 Filter=C
 BaseClass=CScrollView
 VirtualFilter=VWC
-LastObject=CMyView
+LastObject=ID_IFOURIER
 
 
 [CLS:CMainFrame]
@@ -51,7 +51,7 @@ Type=0
 HeaderFile=MainFrm.h
 ImplementationFile=MainFrm.cpp
 Filter=T
-LastObject=ID_HISTOGRAM
+LastObject=ID_FOURIER
 BaseClass=CFrameWnd
 VirtualFilter=fWC
 
@@ -121,7 +121,10 @@ Command3=ID_FILE_SAVE
 Command4=ID_APP_ABOUT
 Command5=ID_GRAY
 Command6=ID_HISTOGRAM
-CommandCount=6
+Command7=ID_EQUALIZE
+Command8=ID_FOURIER
+Command9=ID_IFOURIER
+CommandCount=9
 
 [DLG:IDD_DIALOG1]
 Type=1

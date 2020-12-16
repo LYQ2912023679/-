@@ -24,6 +24,12 @@ BEGIN_MESSAGE_MAP(CMyView, CScrollView)
 	ON_UPDATE_COMMAND_UI(ID_GRAY, OnUpdateGray)
 	ON_COMMAND(ID_HISTOGRAM, OnHistogram)
 	ON_UPDATE_COMMAND_UI(ID_HISTOGRAM, OnUpdateHistogram)
+	ON_COMMAND(ID_EQUALIZE, OnEqualize)
+	ON_UPDATE_COMMAND_UI(ID_EQUALIZE, OnUpdateEqualize)
+	ON_COMMAND(ID_FOURIER, OnFourier)
+	ON_UPDATE_COMMAND_UI(ID_FOURIER, OnUpdateFourier)
+	ON_COMMAND(ID_IFOURIER, OnIfourier)
+	ON_UPDATE_COMMAND_UI(ID_IFOURIER, OnUpdateIfourier)
 	//}}AFX_MSG_MAP
 END_MESSAGE_MAP()
 
@@ -133,4 +139,43 @@ void CMyView::OnUpdateHistogram(CCmdUI* pCmdUI)
 {
 	// TODO: Add your command update UI handler code here
 	pCmdUI->Enable(lpBitsInfo != NULL && IsGray());
+}
+void Equalize();
+void CMyView::OnEqualize() 
+{
+	// TODO: Add your command handler code here
+	Equalize();
+	Invalidate();
+}
+
+void CMyView::OnUpdateEqualize(CCmdUI* pCmdUI) 
+{
+	// TODO: Add your command update UI handler code here
+	pCmdUI->Enable(lpBitsInfo != NULL && IsGray());
+}
+void Fourier();
+void CMyView::OnFourier() 
+{
+	// TODO: Add your command handler code here
+	Fourier();
+	Invalidate();
+}
+
+void CMyView::OnUpdateFourier(CCmdUI* pCmdUI) 
+{
+	// TODO: Add your command update UI handler code here
+	pCmdUI->Enable(lpBitsInfo != NULL && IsGray());
+}
+void IFourier();
+void CMyView::OnIfourier() 
+{
+	// TODO: Add your command handler code here
+	IFourier();
+	Invalidate();
+}
+BOOL gFD_isValid();
+void CMyView::OnUpdateIfourier(CCmdUI* pCmdUI) 
+{
+	// TODO: Add your command update UI handler code here
+	pCmdUI->Enable(gFD_isValid());
 }
